@@ -16,7 +16,7 @@ jobs:
       with:
         python-version: "3.x"
     - name: Install package in editable mode
-      run: pip install -e .
+      run: pip install -e src/
     - name: Install dependencies
       run: |
         pip install pytest
