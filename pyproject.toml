@@ -1,0 +1,154 @@
+[project]
+name = "tablerone"
+version = "0.1.0"
+description = "A highly customizable package to create terminal tables from 2D sequences."
+authors = [
+    { name = "machadinhos", email = "pbmachado2002@gmail.com" }
+]
+readme = "README.md"
+license = { type = "MIT", file = "LICENSE" }
+keywords = ["table", "unicode", "ascii", "pretty", "print", "format", "terminal"]
+# https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Typing :: Typed"
+]
+requires-python = ">= 3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+include = ["py.typed"]
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    # https://pypi.org/project/ruff/
+    "ruff>=0.5.0",
+    # https://pypi.org/project/uv/
+    "uv>=0.2.17",
+    # https://pypi.org/project/hatchling/
+    "hatchling>=1.25.0",
+    # https://pypi.org/project/pre-commit/
+    "pre-commit>=3.7.1",
+    # https://pypi.org/project/pyright/
+    "pyright>=1.1.369",
+    # https://pypi.org/project/pytest/
+    "pytest>=8.2.2",
+    # https://pypi.org/project/pytest-cov/
+    "pytest-cov>=5.0.0",
+    # https://pypi.org/project/pytest-sugar/
+    "pytest-sugar>=1.0.0",
+]
+
+[tool.pyright]
+typeCheckingMode = "strict"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--cov=src/",
+    "--cov=tests/",
+    "--cov-report=html",
+    "--cov-report=term",
+    "--cov-branch",
+    "--cov-fail-under=100"
+]
+testpaths = ["tests/"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+fix = true
+show-fixes = true
+
+[tool.ruff.lint]
+# https://docs.astral.sh/ruff/rules/
+select = [
+    "RUF",  # Ruff-specific rules
+    "E",  # pycodestyle
+    "W",  # pycodestyle
+    "F",  # Pyflakes
+    "B",  # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "BLE",  # flake8-blind-except
+    "FBT",  # flake8-boolean-trap
+    "A",  # flake8-builtins
+    "C90",  # mccabe
+    "T10",  # flake8-debugger
+    "T20",  # flake8-print
+    "EM",  # flake8-errmsg
+    "ICN",  # flake8-import-conventions
+    "PT",  # flake8-pytest-style
+    "Q",  # flake8-quotes
+    "RSE",  # flake8-raise
+    "RET",  # flake8-return
+    "TCH",  # flake8-type-checking
+    "ARG",  # flake8-unused-arguments
+    "ERA",  # eradicate
+    "UP",  # pyupgrade
+    "I",  # isort
+    "N",  # pep8-naming
+    "D",  # pydocstyle
+    "PL",  # Pylint
+    "PERF",  # Perflint
+    "FLY",  # flynt
+    "FURB",  # refurb
+    "TRY",  # tryceratops
+    "PGH",  # pygrep-hooks
+    "PTH",  # flake8-use-pathlib
+    "INT",  # flake8-gettext
+    "TID",  # flake8-tidy-imports
+    "SLF",  # flake8-self
+    "PYI",  # flake8-pyi
+    "PIE",  # flake8-pie
+    "INP",  # flake8-no-pep420
+    "LOG",  # flake8-logging
+    "G",  # flake8-logging-format
+    "ISC",  # flake8-implicit-str-concat
+    "C4",  # flake8-comprehensions
+    "COM",  # flake8-commas
+    "S",  # flake8-bandit
+    "NPY",  # NumPy-specific rules
+    "YTT",  # flake8-2020
+    "SLOT",  # flake8-slots
+    "DTZ",  # flake8-datetimez
+    "EXE",  # flake8-executable
+    "DJ",  # flake8-django
+    "ASYNC",  # flake8-async
+    "FA",  # flake8-future-annotations
+    "PD",  # pandas-vet
+]
+ignore = [
+    "D203", # conflicts with other linting rule
+    "D213", # conflicts with other linting rule
+    "COM812", # conflicts with formater
+    "ISC001", # conflicts with formater
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = [
+    "D1",
+    "S101"
+]
+
+[tool.ruff.format]
+docstring-code-format = true
