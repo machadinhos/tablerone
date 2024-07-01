@@ -2,6 +2,8 @@ import inspect
 from functools import partial
 
 import pytest
+from _pytest._code import ExceptionInfo
+
 from tablerone import TableOptions, tablerone
 from tablerone.exceptions import InvalidPaddingValueError
 
@@ -25,6 +27,7 @@ def tablerone_partial() -> partial[str]:
 )
 def test_negative_padding_values(tablerone_partial: partial[str], paddings: tuple[int, int, int, int]):
     with pytest.raises(ExceptionGroup) as exc_info:
+        exc_info: ExceptionInfo[ExceptionGroup[InvalidPaddingValueError]]
         tablerone_partial(
             padding_horizontal_no_border=paddings[0],
             padding_vertical_no_border=paddings[1],

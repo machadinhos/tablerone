@@ -127,8 +127,10 @@ def tablerone(  # noqa: PLR0913
         InvalidOptionsError: If a given option is invalid.
 
     """
-    if not table_options:
-        table_options = TableOptions(
+    return _Table(
+        data,
+        table_options
+        or TableOptions(
             table_style=table_style,
             padding_horizontal_no_border=padding_horizontal_no_border,
             padding_vertical_no_border=padding_vertical_no_border,
@@ -143,6 +145,5 @@ def tablerone(  # noqa: PLR0913
             align=align,
             align_header=align_header,
             align_body=align_body,
-        )
-
-    return _Table(data, table_options).to_unicode()
+        ),
+    ).to_unicode()

@@ -52,6 +52,6 @@ termcolor==2.4.0
     # via pytest-sugar
 trove-classifiers==2024.5.22
     # via hatchling
-uv==0.2.17
+uv==0.2.18
 virtualenv==20.26.3
     # via pre-commit
